@@ -41,7 +41,7 @@ This repository is the second project in the [Hexlet](hexlet.io) online programm
 5. Display help to see that the utility is ready to go:
 
 ```
-gendiff -h
+  gendiff -h
 ```
 
 How to use this utility:
