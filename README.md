@@ -1,6 +1,6 @@
 ### Hexlet tests and linter status: [![Actions Status](https://github.com/maretov/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/maretov/frontend-project-46/actions)
 
-# The second educational project "Brain-games"
+# The second educational project "Difference calculator"
 
 This repository is the second project in the [Hexlet](hexlet.io) online programming school. Is a console utility that compares two files in json or yaml format and outputs the difference in the specified format.
 
