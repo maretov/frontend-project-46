@@ -1,9 +1,17 @@
+import { fileURLToPath } from 'url';
+import path from 'node:path';
+import fs from 'node:fs';
 import {
   normalizePath,
   getFileFormat,
   getDataFromFile,
   getDiff,
 } from '../src/compare.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename); console.log('__dirname is ', __dirname);
+const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
+const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
 
 let fileJson;
 let fileYaml;
@@ -12,17 +20,9 @@ let objYaml;
 let diff;
 
 beforeAll(() => {
-  fileJson = `{
-    "host": "hexlet.io",
-    "timeout": 50,
-    "proxy": "123.234.53.22",
-    "follow": false
-  }`;
-  fileYaml = `---
-    timeout: 20
-    verbose: true
-    host: hexlet.io
-  `;
+  fileJson = readFile('file1.json');
+  fileYaml = readFile('file2.yaml');
+  diff = readFile('expectedFile');
   objJson = {
     host: 'hexlet.io',
     timeout: 50,
@@ -34,21 +34,12 @@ beforeAll(() => {
     verbose: true,
     host: 'hexlet.io',
   };
-  diff = `{
-  - follow: false
-    host: hexlet.io
-  - proxy: 123.234.53.22
-  - timeout: 50
-  + timeout: 20
-  + verbose: true
-}`;
 });
 
 test('test function normalizePath', () => {
-  expect(normalizePath('__tests__/compare.test.js')).toBe(
-    '/home/maretov/hexlet/frontend-project-46/__tests__/compare.test.js',
-  );
-  expect(normalizePath('/home/maretov/test.js')).toBe('/home/maretov/test.js');
+  const pathToFile = path.join(__dirname, '..', '__fixtures__', 'file1.json');
+  const expectedPath = '/home/maretov/hexlet/frontend-project-46/__fixtures__/file1.json';
+  expect(normalizePath(pathToFile)).toBe(expectedPath);
 });
 
 test('test function getFileFormat', () => {
