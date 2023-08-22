@@ -12,7 +12,9 @@ const getFileFormat = (filePath) => (filePath.slice(-4) === 'json' ? 'json' : 'y
 const getDataFromFile = (file, format) => (format === 'json' ? JSON.parse(file) : yaml.load(file));
 
 const getDiff = (obj1, obj2) => {
-  const keys = [...Object.keys(obj1), ...Object.keys(obj2)];
+  const keys1 = Object.keys(obj1);
+  const keys2 = Object.keys(obj2);
+  const keys = [...keys1, ...keys2];
   const sortedKeys = _.sortBy(keys);
 
   const lines = sortedKeys.map((key) => {
