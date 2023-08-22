@@ -8,7 +8,7 @@ import {
   getDiff,
 } from '../src/compare.js';
 
-const __filename = fileURLToPath(import.meta.url);
+const __filename = fileURLToPath(import.meta.url); console.log('__filename is ', __filename);
 const __dirname = path.dirname(__filename); console.log('__dirname is ', __dirname);
 const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
 const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
