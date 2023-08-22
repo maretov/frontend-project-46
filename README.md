@@ -2,6 +2,10 @@
 
 ### My tests and linter status: [![Action Status](https://github.com/maretov/frontend-project-46/workflows/lint-and-test/badge.svg)](https://github.com/maretov/frontend-project-46/actions)
 
+### Codeclimate: [![Maintainability](https://api.codeclimate.com/v1/badges/00d357d199d0d1eabc39/maintainability)](https://codeclimate.com/github/maretov/frontend-project-46/maintainability)
+
+### Code coverage: [![Test Coverage](https://api.codeclimate.com/v1/badges/00d357d199d0d1eabc39/test_coverage)](https://codeclimate.com/github/maretov/frontend-project-46/test_coverage)
+
 # The second educational project "Difference calculator"
 
 This repository is the second project in the [Hexlet](hexlet.io) online programming school. Is a console utility that compares two files in json or yaml format and outputs the difference in the specified format.
