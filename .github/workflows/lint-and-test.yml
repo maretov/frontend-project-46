@@ -8,3 +8,11 @@ jobs:
       - run: make install
       - run: make lint
       - run: make test
+      - name: test & publish code covarage
+        uses: paambaati/codeclimate-action@v5.0.0
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+        with:
+          covarageCommand: make test-coverage
+          debug: true
+
