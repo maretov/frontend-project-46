@@ -4,7 +4,6 @@ import fs from 'node:fs';
 import {
   normalizePath,
   getFileFormat,
-  getDataFromFile,
   getDiff,
 } from '../src/compare.js';
 
@@ -13,16 +12,11 @@ const __dirname = path.dirname(__filename);
 const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
 const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
 
-let fileJson;
-let fileYaml;
 let objJson;
 let objYaml;
 let diff;
 
 beforeAll(() => {
-  fileJson = readFile('file1.json');
-  fileYaml = readFile('file2.yaml');
-  diff = readFile('expectedFile');
   objJson = {
     host: 'hexlet.io',
     timeout: 50,
@@ -34,6 +28,7 @@ beforeAll(() => {
     verbose: true,
     host: 'hexlet.io',
   };
+  diff = readFile('expectedFile');
 });
 
 test('test function normalizePath', () => {
@@ -42,13 +37,9 @@ test('test function normalizePath', () => {
 });
 
 test('test function getFileFormat', () => {
-  expect(getFileFormat('file.json')).toBe('json');
-  expect(getFileFormat('file.yaml')).toBe('yaml');
-});
-
-test('test function getDataFromFile', () => {
-  expect(getDataFromFile(fileJson, 'json')).toEqual(objJson);
-  expect(getDataFromFile(fileYaml, 'yaml')).toEqual(objYaml);
+  expect(getFileFormat('file.json')).toBe('.json');
+  expect(getFileFormat('../temp/file.ini')).toBe('.ini');
+  expect(getFileFormat('/home/test/file.yaml')).toBe('.yaml');
 });
 
 test('test function getDiff', () => {

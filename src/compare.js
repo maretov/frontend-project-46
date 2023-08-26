@@ -1,15 +1,15 @@
 import path from 'node:path';
 import _ from 'lodash';
-import yaml from 'js-yaml';
 
 const normalizePath = (pathSegment) => {
   const cwd = process.cwd();
   return path.resolve(cwd, pathSegment);
 };
 
-const getFileFormat = (filePath) => (filePath.slice(-4) === 'json' ? 'json' : 'yaml');
-
-const getDataFromFile = (file, format) => (format === 'json' ? JSON.parse(file) : yaml.load(file));
+const getFileFormat = (filePath) => {
+  const parsedPath = path.parse(filePath);
+  return parsedPath.ext;
+};
 
 const getDiff = (obj1, obj2) => {
   const keys1 = Object.keys(obj1);
@@ -46,6 +46,5 @@ const getDiff = (obj1, obj2) => {
 export {
   normalizePath,
   getFileFormat,
-  getDataFromFile,
   getDiff,
 };

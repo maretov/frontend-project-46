@@ -2,10 +2,10 @@
 
 import fs from 'node:fs';
 import { Command } from 'commander';
+import parse from '../src/parsers.js';
 import {
   normalizePath,
   getFileFormat,
-  getDataFromFile,
   getDiff,
 } from '../src/compare.js';
 
@@ -29,8 +29,8 @@ program
     const file1 = fs.readFileSync(normalizedPath1, 'utf-8');
     const file2 = fs.readFileSync(normalizedPath2, 'utf-8');
 
-    const obj1 = getDataFromFile(file1, format1);
-    const obj2 = getDataFromFile(file2, format2);
+    const obj1 = parse(file1, format1);
+    const obj2 = parse(file2, format2);
 
     const diff = getDiff(obj1, obj2);
     console.log(diff);
