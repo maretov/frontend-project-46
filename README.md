@@ -53,3 +53,4 @@ This repository is the second project in the [Hexlet](hexlet.io) online programm
 How to use this utility:
 [![asciicast](https://asciinema.org/a/604775.svg)](https://asciinema.org/a/604775)
 [![asciicast](https://asciinema.org/a/604773.svg)](https://asciinema.org/a/604773)
+[![asciicast](https://asciinema.org/a/605915.svg)](https://asciinema.org/a/605915)

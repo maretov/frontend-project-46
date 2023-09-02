@@ -1,34 +1,34 @@
 import { fileURLToPath } from 'url';
 import path from 'node:path';
 import fs from 'node:fs';
+import parse from '../src/parsers.js';
 import {
   normalizePath,
   getFileFormat,
+  isObj,
   getDiff,
 } from '../src/compare.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
+const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__/tests', filename);
 const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
 
-let objJson;
-let objYaml;
+let file1;
+let file2;
+let diffFile;
+let json1;
+let json2;
 let diff;
 
 beforeAll(() => {
-  objJson = {
-    host: 'hexlet.io',
-    timeout: 50,
-    proxy: '123.234.53.22',
-    follow: false,
-  };
-  objYaml = {
-    timeout: 20,
-    verbose: true,
-    host: 'hexlet.io',
-  };
-  diff = readFile('expectedFile');
+  file1 = readFile('testFile1.json');
+  file2 = readFile('testFile2.json');
+  diffFile = readFile('testDiff.json');
+
+  json1 = parse(file1, '.json');
+  json2 = parse(file2, '.json');
+  diff = parse(diffFile, '.json');
 });
 
 test('test function normalizePath', () => {
@@ -43,5 +43,13 @@ test('test function getFileFormat', () => {
 });
 
 test('test function getDiff', () => {
-  expect(getDiff(objJson, objYaml, 'json')).toBe(diff);
+  expect(getDiff(json1, json2)).toStrictEqual(diff);
+});
+
+test('test function isObj', () => {
+  expect(isObj({ name: 'Jhon' })).toBe(true);
+  expect(isObj([1, 2, 3])).toBe(false);
+  expect(isObj(null)).toBe(false);
+  expect(isObj('string')).toBe(false);
+  expect(isObj(56)).toBe(false);
 });

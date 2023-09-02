@@ -1,0 +1,79 @@
+[
+  {
+    "key": "age",
+    "value": {
+      "old": 18,
+      "new": 35
+    },
+    "status": "changed"
+  },
+  {
+    "key": "hobby",
+    "value": "reading",
+    "status": "added"
+  },
+  {
+    "key": "jobs",
+    "value": [
+      {
+        "key": "first",
+        "value": {
+          "old": "sysadmin",
+          "new": "sysadmin & repair"
+        },
+        "status": "changed"
+      },
+      {
+        "key": "second",
+        "value": "IT",
+        "status": "unchanged"
+      },
+      {
+        "key": "third",
+        "value": "musician",
+        "status": "added"
+      }
+    ],
+    "status": "objects"
+  },
+  {
+    "key": "married",
+    "value": true,
+    "status": "unchanged"
+  },
+  {
+    "key": "name",
+    "value": "Dima",
+    "status": "unchanged"
+  },
+  {
+    "key": "surname",
+    "value": "Maretov",
+    "status": "deleted"
+  },
+  {
+    "key": "x1",
+    "value": {
+      "old": {
+        "one": 1,
+        "two": 2
+      },
+      "new": "string"
+    },
+    "status": "changed"
+  },
+  {
+    "key": "x2",
+    "value": {
+      "thisObject": "deleted"
+    },
+    "status": "deleted"
+  },
+  {
+    "key": "x3",
+    "value": {
+      "newObject": "added"
+    },
+    "status": "added"
+  }
+]

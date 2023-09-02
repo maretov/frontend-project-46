@@ -11,40 +11,55 @@ const getFileFormat = (filePath) => {
   return parsedPath.ext;
 };
 
+const isObj = (data) => {
+  if (typeof data === 'object' && !Array.isArray(data) && data !== null) {
+    return true;
+  }
+
+  return false;
+};
+
 const getDiff = (obj1, obj2) => {
   const keys1 = Object.keys(obj1);
   const keys2 = Object.keys(obj2);
   const keys = [...keys1, ...keys2];
   const sortedKeys = _.sortBy(keys);
+  const uniqKeys = _.uniq(sortedKeys);
 
-  const lines = sortedKeys.map((key) => {
+  const diffTree = uniqKeys.map((key) => {
     const inFirst = Object.prototype.hasOwnProperty.call(obj1, key);
     const inSecond = Object.prototype.hasOwnProperty.call(obj2, key);
 
     let result;
 
     if (inFirst && !inSecond) {
-      result = `  - ${key}: ${obj1[key]}`;
+      result = { key, value: obj1[key], status: 'deleted' };
     }
     if (!inFirst && inSecond) {
-      result = `  + ${key}: ${obj2[key]}`;
+      result = { key, value: obj2[key], status: 'added' };
     }
-    if (inFirst && inSecond && obj1[key] !== obj2[key]) {
-      result = `  - ${key}: ${obj1[key]}\n  + ${key}: ${obj2[key]}`;
-    }
-    if (inFirst && inSecond && obj1[key] === obj2[key]) {
-      result = `    ${key}: ${obj1[key]}`;
+    if (inFirst && inSecond) {
+      const value1 = obj1[key];
+      const value2 = obj2[key];
+
+      if (isObj(value1) && isObj(value2)) {
+        result = { key, value: getDiff(value1, value2), status: 'objects' };
+      } else if (JSON.stringify(value1) === JSON.stringify(value2)) {
+        result = { key, value: value1, status: 'unchanged' };
+      } else {
+        result = { key, value: { old: value1, new: value2 }, status: 'changed' };
+      }
     }
 
     return result;
   });
 
-  const uniqLines = _.uniq(lines);
-  return `{\n${uniqLines.join('\n')}\n}`;
+  return diffTree;
 };
 
 export {
   normalizePath,
   getFileFormat,
+  isObj,
   getDiff,
 };

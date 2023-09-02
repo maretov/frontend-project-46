@@ -3,6 +3,7 @@
 import fs from 'node:fs';
 import { Command } from 'commander';
 import parse from '../src/parsers.js';
+import formatTo from '../src/formatters.js';
 import {
   normalizePath,
   getFileFormat,
@@ -18,8 +19,8 @@ program
 
 program
   .arguments('<filepath1> <filepath2>')
-  .option('-f, --format <format>', 'output format')
-  .action((path1, path2) => {
+  .option('-f, --format <format>', 'output format', 'stylish')
+  .action((path1, path2, options) => {
     const normalizedPath1 = normalizePath(path1);
     const normalizedPath2 = normalizePath(path2);
 
@@ -33,7 +34,8 @@ program
     const obj2 = parse(file2, format2);
 
     const diff = getDiff(obj1, obj2);
-    console.log(diff);
+    const formattedDiff = formatTo(diff, options.format);
+    console.log(formattedDiff);
   });
 
 program.parse();

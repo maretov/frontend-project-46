@@ -1,0 +1,15 @@
+{
+  "name": "Dima",
+  "age": 35,
+  "married": true,
+  "hobby": "reading",
+  "jobs": {
+    "first": "sysadmin & repair",
+    "second": "IT",
+    "third": "musician"
+  },
+  "x1": "string",
+  "x3": {
+    "newObject": "added"
+  }
+}
