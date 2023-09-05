@@ -1,12 +1,12 @@
 import { fileURLToPath } from 'url';
 import fs from 'fs';
 import path from 'path';
-import parse from '../src/parsers.js';
-import formatTo from '../src/formatters.js';
+import parse from '../../src/parsers.js';
+import formatToStylish from '../../formatters/stylish.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__/tests', filename);
+const getFixturePath = (filename) => path.join(__dirname, '../..', '__fixtures__/tests', filename);
 const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
 
 let diffFile;
@@ -20,5 +20,5 @@ beforeAll(() => {
 });
 
 test('test function formatToStylish', () => {
-  expect(formatTo(diff, 'stylish')).toBe(testStylishDiff);
+  expect(formatToStylish(diff, 'stylish')).toBe(testStylishDiff);
 });

@@ -11,8 +11,16 @@ const getFileFormat = (filePath) => {
   return parsedPath.ext;
 };
 
-const isObj = (data) => {
-  if (typeof data === 'object' && !Array.isArray(data) && data !== null) {
+const isObj = (obj) => {
+  if (typeof obj === 'object' && !Array.isArray(obj) && obj !== null) {
+    return true;
+  }
+
+  return false;
+};
+
+const isComplex = (complex) => {
+  if (typeof complex === 'object' && complex !== null) {
     return true;
   }
 
@@ -33,7 +41,7 @@ const getDiff = (obj1, obj2) => {
     let result;
 
     if (inFirst && !inSecond) {
-      result = { key, value: obj1[key], status: 'deleted' };
+      result = { key, value: obj1[key], status: 'removed' };
     }
     if (!inFirst && inSecond) {
       result = { key, value: obj2[key], status: 'added' };
@@ -45,9 +53,9 @@ const getDiff = (obj1, obj2) => {
       if (isObj(value1) && isObj(value2)) {
         result = { key, value: getDiff(value1, value2), status: 'objects' };
       } else if (JSON.stringify(value1) === JSON.stringify(value2)) {
-        result = { key, value: value1, status: 'unchanged' };
+        result = { key, value: value1, status: 'notupdated' };
       } else {
-        result = { key, value: { old: value1, new: value2 }, status: 'changed' };
+        result = { key, value: { old: value1, new: value2 }, status: 'updated' };
       }
     }
 
@@ -61,5 +69,6 @@ export {
   normalizePath,
   getFileFormat,
   isObj,
+  isComplex,
   getDiff,
 };

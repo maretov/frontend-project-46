@@ -21,31 +21,26 @@ This repository is the second project in the [Hexlet](hexlet.io) online programm
 ## Install and test:
 
 1. Clone this repository:
-
 ```
   git clone https://github.com/maretov/frontend-project-46.git
 ```
 
 2. Go to directory "frontend-project-46"
-
 ```
   cd ./frontend-project-46/
 ```
 
 3. Install dependencies:
-
 ```
   make install
 ```
 
 4. Install package as local in your OS (you may need to use sudo):
-
 ```
   npm link
 ```
 
 5. Display help to see that the utility is ready to go:
-
 ```
   gendiff -h
 ```
@@ -54,3 +49,4 @@ How to use this utility:
 [![asciicast](https://asciinema.org/a/604775.svg)](https://asciinema.org/a/604775)
 [![asciicast](https://asciinema.org/a/604773.svg)](https://asciinema.org/a/604773)
 [![asciicast](https://asciinema.org/a/605915.svg)](https://asciinema.org/a/605915)
+[![asciicast](https://asciinema.org/a/606296.svg)](https://asciinema.org/a/606296)

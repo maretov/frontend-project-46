@@ -5,7 +5,7 @@
       "old": 18,
       "new": 35
     },
-    "status": "changed"
+    "status": "updated"
   },
   {
     "key": "hobby",
@@ -21,12 +21,12 @@
           "old": "sysadmin",
           "new": "sysadmin & repair"
         },
-        "status": "changed"
+        "status": "updated"
       },
       {
         "key": "second",
         "value": "IT",
-        "status": "unchanged"
+        "status": "notupdated"
       },
       {
         "key": "third",
@@ -39,17 +39,17 @@
   {
     "key": "married",
     "value": true,
-    "status": "unchanged"
+    "status": "notupdated"
   },
   {
     "key": "name",
     "value": "Dima",
-    "status": "unchanged"
+    "status": "notupdated"
   },
   {
     "key": "surname",
     "value": "Maretov",
-    "status": "deleted"
+    "status": "removed"
   },
   {
     "key": "x1",
@@ -60,14 +60,14 @@
       },
       "new": "string"
     },
-    "status": "changed"
+    "status": "updated"
   },
   {
     "key": "x2",
     "value": {
-      "thisObject": "deleted"
+      "thisObject": "removed"
     },
-    "status": "deleted"
+    "status": "removed"
   },
   {
     "key": "x3",

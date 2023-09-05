@@ -6,6 +6,7 @@ import {
   normalizePath,
   getFileFormat,
   isObj,
+  isComplex,
   getDiff,
 } from '../src/compare.js';
 
@@ -52,4 +53,12 @@ test('test function isObj', () => {
   expect(isObj(null)).toBe(false);
   expect(isObj('string')).toBe(false);
   expect(isObj(56)).toBe(false);
+});
+
+test('test function isComplex', () => {
+  expect(isComplex({ name: 'John' })).toBe(true);
+  expect(isComplex([1, 3, 4])).toBe(true);
+  expect(isComplex(null)).toBe(false);
+  expect(isComplex('string')).toBe(false);
+  expect(isComplex(56)).toBe(false);
 });

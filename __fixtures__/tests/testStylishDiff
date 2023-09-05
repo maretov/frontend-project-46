@@ -17,7 +17,7 @@
     }
   + x1: string
   - x2: {
-        thisObject: deleted
+        thisObject: removed
     }
   + x3: {
         newObject: added

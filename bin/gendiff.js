@@ -3,7 +3,7 @@
 import fs from 'node:fs';
 import { Command } from 'commander';
 import parse from '../src/parsers.js';
-import formatTo from '../src/formatters.js';
+import formatTo from '../formatters/index.js';
 import {
   normalizePath,
   getFileFormat,

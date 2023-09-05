@@ -1,0 +1,8 @@
+Property 'age' was updated. From 18 to 35
+Property 'hobby' was added with value 'reading'
+Property 'jobs.first' was updated. From 'sysadmin' to 'sysadmin & repair'
+Property 'jobs.third' was added with value 'musician'
+Property 'surname' was removed
+Property 'x1' was updated. From [complex value] to 'string'
+Property 'x2' was removed
+Property 'x3' was added with value [complex value]
