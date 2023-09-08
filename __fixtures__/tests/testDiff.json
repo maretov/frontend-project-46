@@ -1,79 +1,79 @@
 [
   {
     "key": "age",
+    "status": "updated",
     "value": {
       "old": 18,
       "new": 35
-    },
-    "status": "updated"
+    }
   },
   {
     "key": "hobby",
-    "value": "reading",
-    "status": "added"
+    "status": "added",
+    "value": "reading"
   },
   {
     "key": "jobs",
+    "status": "objects",
     "value": [
       {
         "key": "first",
+        "status": "updated",
         "value": {
           "old": "sysadmin",
           "new": "sysadmin & repair"
-        },
-        "status": "updated"
+        }
       },
       {
         "key": "second",
-        "value": "IT",
-        "status": "notupdated"
+        "status": "notupdated",
+        "value": "IT"
       },
       {
         "key": "third",
-        "value": "musician",
-        "status": "added"
+        "status": "added",
+        "value": "musician"
       }
-    ],
-    "status": "objects"
+    ]
   },
   {
     "key": "married",
-    "value": true,
-    "status": "notupdated"
+    "status": "notupdated",
+    "value": true
   },
   {
     "key": "name",
-    "value": "Dima",
-    "status": "notupdated"
+    "status": "notupdated",
+    "value": "Dima"
   },
   {
     "key": "surname",
-    "value": "Maretov",
-    "status": "removed"
+    "status": "removed",
+    "value": "Maretov"
   },
   {
     "key": "x1",
+    "status": "updated",
     "value": {
       "old": {
         "one": 1,
         "two": 2
       },
       "new": "string"
-    },
-    "status": "updated"
+    }
   },
   {
     "key": "x2",
+    "status": "removed",
     "value": {
       "thisObject": "removed"
-    },
-    "status": "removed"
+    }
   },
   {
     "key": "x3",
+    "status": "added",
     "value": {
       "newObject": "added"
-    },
-    "status": "added"
+    }
   }
 ]

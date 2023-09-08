@@ -50,3 +50,4 @@ How to use this utility:
 [![asciicast](https://asciinema.org/a/604773.svg)](https://asciinema.org/a/604773)
 [![asciicast](https://asciinema.org/a/605915.svg)](https://asciinema.org/a/605915)
 [![asciicast](https://asciinema.org/a/606296.svg)](https://asciinema.org/a/606296)
+[![asciicast](https://asciinema.org/a/606823.svg)](https://asciinema.org/a/606823)

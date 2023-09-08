@@ -41,21 +41,21 @@ const getDiff = (obj1, obj2) => {
     let result;
 
     if (inFirst && !inSecond) {
-      result = { key, value: obj1[key], status: 'removed' };
+      result = { key, status: 'removed', value: obj1[key] };
     }
     if (!inFirst && inSecond) {
-      result = { key, value: obj2[key], status: 'added' };
+      result = { key, status: 'added', value: obj2[key] };
     }
     if (inFirst && inSecond) {
       const value1 = obj1[key];
       const value2 = obj2[key];
 
       if (isObj(value1) && isObj(value2)) {
-        result = { key, value: getDiff(value1, value2), status: 'objects' };
+        result = { key, status: 'objects', value: getDiff(value1, value2) };
       } else if (JSON.stringify(value1) === JSON.stringify(value2)) {
-        result = { key, value: value1, status: 'notupdated' };
+        result = { key, status: 'notupdated', value: value1 };
       } else {
-        result = { key, value: { old: value1, new: value2 }, status: 'updated' };
+        result = { key, status: 'updated', value: { old: value1, new: value2 } };
       }
     }
 

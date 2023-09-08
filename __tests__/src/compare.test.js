@@ -1,18 +1,18 @@
 import { fileURLToPath } from 'url';
 import path from 'node:path';
 import fs from 'node:fs';
-import parse from '../src/parsers.js';
+import parse from '../../src/parsers.js';
 import {
   normalizePath,
   getFileFormat,
   isObj,
   isComplex,
   getDiff,
-} from '../src/compare.js';
+} from '../../src/compare.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__/tests', filename);
+const getFixturePath = (filename) => path.join(__dirname, '../..', '__fixtures__/tests', filename);
 const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
 
 let file1;
@@ -33,8 +33,8 @@ beforeAll(() => {
 });
 
 test('test function normalizePath', () => {
-  const expectedPath = path.join(__dirname, '..', '__fixtures__', 'file1.json');
-  expect(normalizePath('__fixtures__/file1.json')).toBe(expectedPath);
+  const expectedPath = path.join(__dirname, '../..', '__fixtures__/tests', 'file1.json');
+  expect(normalizePath('__fixtures__/tests/file1.json')).toBe(expectedPath);
 });
 
 test('test function getFileFormat', () => {
