@@ -27,12 +27,16 @@ const isComplex = (complex) => {
   return false;
 };
 
-const getDiff = (obj1, obj2) => {
-  const keys1 = Object.keys(obj1);
-  const keys2 = Object.keys(obj2);
+const getCommonSortedUniqKeys = (firstObject, secondObject) => {
+  const keys1 = Object.keys(firstObject);
+  const keys2 = Object.keys(secondObject);
   const keys = [...keys1, ...keys2];
   const sortedKeys = _.sortBy(keys);
-  const uniqKeys = _.uniq(sortedKeys);
+  return _.uniq(sortedKeys);
+};
+
+const getDiff = (obj1, obj2) => {
+  const uniqKeys = getCommonSortedUniqKeys(obj1, obj2);
 
   const diffTree = uniqKeys.map((key) => {
     const inFirst = Object.prototype.hasOwnProperty.call(obj1, key);
