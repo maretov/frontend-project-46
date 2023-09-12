@@ -46,8 +46,18 @@ This repository is the second project in the [Hexlet](hexlet.io) online programm
 ```
 
 How to use this utility:
+
+Сompares two json files (flat structures) and shows the difference in stylish format
 [![asciicast](https://asciinema.org/a/604775.svg)](https://asciinema.org/a/604775)
+
+Сompares two yaml files (flat structures) and shows the difference in stylish format
 [![asciicast](https://asciinema.org/a/604773.svg)](https://asciinema.org/a/604773)
+
+Сompares two json of yaml files (nested structures) and shows the difference in stylish format
 [![asciicast](https://asciinema.org/a/605915.svg)](https://asciinema.org/a/605915)
+
+Сompares two json of yaml files (nested structures) and shows the difference in plain format
 [![asciicast](https://asciinema.org/a/607457.svg)](https://asciinema.org/a/607457)
+
+Сompares two json of yaml files (nested structures) and shows the difference in json format
 [![asciicast](https://asciinema.org/a/606823.svg)](https://asciinema.org/a/606823)
