@@ -45,7 +45,7 @@ This repository is the second project in the [Hexlet](hexlet.io) online programm
   gendiff -h
 ```
 
-How to use this utility:
+## How to use this utility:
 
 Сompares two json files (flat structures) and shows the difference in stylish format
 [![asciicast](https://asciinema.org/a/604775.svg)](https://asciinema.org/a/604775)
