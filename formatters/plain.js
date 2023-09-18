@@ -31,7 +31,7 @@ const formatToPlain = (differences) => {
       }
 
       if (status === 'added') {
-        line = `Property '${stringPath}' was added with value ${buildValue(value)}`;
+        line = `Property '${stringPath}' was added with value: ${buildValue(value)}`;
       }
 
       if (status === 'updated') {
