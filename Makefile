@@ -10,11 +10,11 @@ lint:
 test-coverage:
 	npm test -- --coverage --coverageProvider=v8
 
-gendiff-json:
-	gendiff __fixtures__/file1.json __fixtures__/file2.json
+gendiff-plain:
+	gendiff --format plain __fixtures__/file1.json __fixtures__/file2.json
 
-gendiff-yaml:
+gendiff:
 	gendiff __fixtures__/file1.yml __fixtures__/file2.yaml
 
-gendiff-json-yaml:
-	gendiff __fixtures__/file1.json __fixtures__/file2.yaml
+gendiff-json:
+	gendiff -f json __fixtures__/file1.json __fixtures__/file2.yaml
