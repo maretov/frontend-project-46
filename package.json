@@ -4,6 +4,9 @@
   "description": "This repository is the second project in the Hexlet online programming school.",
   "type": "module",
   "main": "src/index.js",
+  "bin": {
+    "gendiff": "bin/gendiff.js"
+  },
   "scripts": {
     "test": "jest"
   },
