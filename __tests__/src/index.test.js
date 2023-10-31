@@ -12,7 +12,7 @@ const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8'
 const stylishResult = readFile('stylishResult');
 const plainResult = readFile('plainResult');
 
-test('test function genDiff', () => {
+test('genDiff', () => {
   const pathJson1 = '__fixtures__/file1.json';
   const pathJson2 = '__fixtures__/file2.json';
   const pathYaml1 = '__fixtures__/file1.yml';
