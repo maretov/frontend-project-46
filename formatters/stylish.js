@@ -36,31 +36,34 @@ const formatToStylish = (differences) => {
   const iter = (diffs, depth) => {
     const formattedLines = diffs.map((diff) => {
       const { key, value, status } = diff;
-      let line;
 
-      if (status === 'objects') {
-        const iterValue = iter(value, depth + 1);
-        const indent = buildIndent(depth, status);
-        return `${indent}${key}: ${iterValue}`;
+      switch (status) {
+        case 'objects': {
+          const iterValue = iter(value, depth + 1);
+          const indent = buildIndent(depth, status);
+          return `${indent}${key}: ${iterValue}`;
+        }
+        case 'updated': {
+          const indentDel = buildIndent(depth, 'removed');
+          const buildedOldValue = buildValue(value.old, depth + 1);
+          const deletedLine = `${indentDel}${key}: ${buildedOldValue}`;
+
+          const indentAdd = buildIndent(depth, 'added');
+          const buildedNewValue = buildValue(value.new, depth + 1);
+          const addedLine = `${indentAdd}${key}: ${buildedNewValue}`;
+
+          return `${deletedLine}\n${addedLine}`;
+        }
+        case 'notupdated':
+        case 'added':
+        case 'removed': {
+          const indent = buildIndent(depth, status);
+          const buildedValue = buildValue(value, depth + 1);
+          return `${indent}${key}: ${buildedValue}`;
+        }
+        default:
+          throw new Error(`Unknown status: ${status}`);
       }
-
-      if (status === 'updated') {
-        const indentDel = buildIndent(depth, 'removed');
-        const buildedOldValue = buildValue(value.old, depth + 1);
-        const deletedLine = `${indentDel}${key}: ${buildedOldValue}`;
-
-        const indentAdd = buildIndent(depth, 'added');
-        const buildedNewValue = buildValue(value.new, depth + 1);
-        const addedLine = `${indentAdd}${key}: ${buildedNewValue}`;
-
-        line = `${deletedLine}\n${addedLine}`;
-      } else {
-        const indent = buildIndent(depth, status);
-        const buildedValue = buildValue(value, depth + 1);
-        line = `${indent}${key}: ${buildedValue}`;
-      }
-
-      return line;
     });
 
     const indentFull = buildIndent(depth, 'notupdated');

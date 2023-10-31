@@ -1,11 +1,18 @@
 import fs from 'node:fs';
+import path from 'node:path';
 import parse from './parsers.js';
 import formatTo from '../formatters/index.js';
-import {
-  normalizePath,
-  getFileFormat,
-  getDiff,
-} from './compare.js';
+import { getDiff } from './compare.js';
+
+const normalizePath = (pathSegment) => {
+  const cwd = process.cwd();
+  return path.resolve(cwd, pathSegment);
+};
+
+const getFileFormat = (filePath) => {
+  const parsedPath = path.parse(filePath);
+  return parsedPath.ext;
+};
 
 const genDiff = (path1, path2, format) => {
   const normalizedPath1 = normalizePath(path1);

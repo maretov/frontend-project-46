@@ -1,26 +1,7 @@
-import path from 'node:path';
 import _ from 'lodash';
-
-const normalizePath = (pathSegment) => {
-  const cwd = process.cwd();
-  return path.resolve(cwd, pathSegment);
-};
-
-const getFileFormat = (filePath) => {
-  const parsedPath = path.parse(filePath);
-  return parsedPath.ext;
-};
 
 const isObj = (obj) => {
   if (typeof obj === 'object' && !Array.isArray(obj) && obj !== null) {
-    return true;
-  }
-
-  return false;
-};
-
-const isComplex = (complex) => {
-  if (typeof complex === 'object' && complex !== null) {
     return true;
   }
 
@@ -70,9 +51,6 @@ const getDiff = (obj1, obj2) => {
 };
 
 export {
-  normalizePath,
-  getFileFormat,
   isObj,
-  isComplex,
   getDiff,
 };
