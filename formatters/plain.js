@@ -24,13 +24,12 @@ const formatToPlain = (differences) => {
   const iter = (diffs, path) => {
     const lines = diffs.map((diff) => {
       const { key, value, status } = diff;
-      const pathCopy = [...path];
-      pathCopy.push(key);
-      const stringPath = pathCopy.join('.');
+      const newPath = [...path, key];
+      const stringPath = newPath.join('.');
 
       switch (status) {
         case 'objects':
-          return iter(value, pathCopy);
+          return iter(value, newPath);
         case 'removed':
           return `Property '${stringPath}' was removed`;
         case 'added':
