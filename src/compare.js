@@ -23,28 +23,28 @@ const getDiff = (obj1, obj2) => {
     const inFirst = Object.prototype.hasOwnProperty.call(obj1, key);
     const inSecond = Object.prototype.hasOwnProperty.call(obj2, key);
 
-    let result;
-
     if (inFirst && !inSecond) {
-      result = { key, status: 'removed', value: obj1[key] };
+      return { key, status: 'removed', value: obj1[key] };
     }
     if (!inFirst && inSecond) {
-      result = { key, status: 'added', value: obj2[key] };
+      return { key, status: 'added', value: obj2[key] };
     }
     if (inFirst && inSecond) {
       const value1 = obj1[key];
       const value2 = obj2[key];
 
       if (isObj(value1) && isObj(value2)) {
-        result = { key, status: 'objects', value: getDiff(value1, value2) };
-      } else if (JSON.stringify(value1) === JSON.stringify(value2)) {
-        result = { key, status: 'notupdated', value: value1 };
-      } else {
-        result = { key, status: 'updated', value: { old: value1, new: value2 } };
+        return { key, status: 'objects', value: getDiff(value1, value2) };
       }
+
+      if (JSON.stringify(value1) === JSON.stringify(value2)) {
+        return { key, status: 'notupdated', value: value1 };
+      }
+
+      return { key, status: 'updated', value: { old: value1, new: value2 } };
     }
 
-    return result;
+    return undefined;
   });
 
   return diffTree;
